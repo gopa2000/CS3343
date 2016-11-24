@@ -17,7 +17,7 @@ public class Main {
 				else { System.out.println(); }
 				
 				System.out.println("Hi, there!");
-				System.out.println("Here you find jobs or slaves - whatever you're into.");
+				System.out.println("Here you find jobs and people to do them.");
 				System.out.println();
 				
 				System.out.println("Available commands: ");
@@ -63,6 +63,23 @@ public class Main {
 			try{System.in.read();} catch(Exception e){}
 		}
 		/*********************************************************/
+		
+		if(cmdParts[0].equals("fo")){
+			String chatroom = "seeker@urmum.comemployer@urgrandmum.com";
+			chatroom = chatroom.replaceAll("[^a-zA-Z0-9]+","");
+			
+	        String newRoom = "";
+
+	        for(int i=0; i<chatroom.length(); i+=2){
+	            newRoom += chatroom.charAt(i);
+	        }
+			
+			System.out.println(newRoom);
+			
+			// wait for input
+			try{System.in.read();} catch(Exception e){}
+			
+		};
 		
 		int argCount = cmdParts.length;
 		

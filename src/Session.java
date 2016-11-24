@@ -56,4 +56,9 @@ public class Session {
 	public void setSessionUser(User sessionUser) {
 		this.sessionUser = sessionUser;
 	}
+	
+	public void createSession() throws Exception{
+		if(sessionManager.getListings().size() > 0)
+			throw new Exception("User session already exists!");
+	}
 }
