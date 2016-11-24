@@ -5,7 +5,7 @@ public class Session {
 	private ArrayList<? extends User> sessionList;
 	private User sessionUser;
 	private SessionManager sessionManager;
-	private Scanner scanner;
+	private Scanner in;
 	
 	public Session(User user){
 		this.sessionUser 	= user;
@@ -14,22 +14,46 @@ public class Session {
 	
 	public void startSession(){
 		sessionList = sessionManager.getSessionList();
-		scanner		= new Scanner(System.in);
+		in			= new Scanner(System.in);
 		
-		System.out.println("There are " + sessionList.size() + " listings to display.");
-		System.out.println("Enter y or n depending on your preference.");
-		
-		for(User u:sessionList){
-			// display function
-						
-			System.out.println("Enter preference (y/n):");
-			String pref = scanner.nextLine();
+		while(true){
+			Main.clearScreen();
+			System.out.println("The following commands are available: ");
+			System.out.println("\t1. check matches.");
+			System.out.println("\t2. show listings");
+			System.out.println("\t3. logout\n");
 			
-			if(pref.equals("y")){
-				// add to like table
-				sessionManager.addToLikeTable(new Like(sessionUser, u));
-				sessionManager.checkMatch();
-			}
+			System.out.println("Enter command: ");
+			
+			String cmd = in.nextLine();		
+			int result = processInput(cmd);
+			
+			if(result == 1) return;
 		}
+
+	}
+	
+	private int processInput(String cmd){
+		if(cmd.equals("logout")){
+			return 1;
+		}
+		
+		if(cmd.equals("check matches")){
+			(new cmdCheckMatches()).equals(cmd);
+		}
+		
+		else if (cmd.equals("show listings")){
+			
+		}
+		
+		return 0;
+	}
+
+	public User getSessionUser() {
+		return sessionUser;
+	}
+
+	public void setSessionUser(User sessionUser) {
+		this.sessionUser = sessionUser;
 	}
 }

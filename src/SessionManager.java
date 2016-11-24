@@ -31,8 +31,10 @@ public class SessionManager implements Serializable {
 		this.matchTable		= new ArrayList<>();
 		this.sessionUser	= null;
 
-		readListingsDb();
-		readSeekersDb();
+		this.readListingsDb();
+		this.readSeekersDb();
+		this.readLikeTableDb();
+		this.readMatchTableDb();
 	}
 	
 	public void init(){
@@ -47,6 +49,67 @@ public class SessionManager implements Serializable {
 	public void addUser(Seeker user){
 		seekers.add((Seeker) user);
 		writeSeekerDb();	
+	}
+	
+	public void writeMatchTableDb(){
+		try {
+			File matchDb			= new File("match.db");
+			
+			matchDb.createNewFile();
+			
+			FileOutputStream fos	= new FileOutputStream("match.db");
+			ObjectOutputStream oos	= new ObjectOutputStream(fos);
+			
+			oos.writeObject(this.matchTable);
+		} catch (Exception e){
+			System.out.println(e.toString());
+		}
+	}
+	
+	public void readMatchTableDb(){
+		try {
+			File matchDb 				= new File("match.db");
+			matchDb.createNewFile(); // creates new file if doesn't exist, does nothing otherwise
+			
+			FileInputStream fis			= new FileInputStream("match.db");
+			ObjectInputStream ois 		= new ObjectInputStream(fis);
+			
+			ArrayList<Match> readcase	= (ArrayList<Match>) ois.readObject();
+			
+			this.matchTable = readcase;
+		} catch (Exception e){
+			System.out.println(e.toString());
+		}
+	}
+	
+	public void writeLikeTableDb(){
+		try{
+			File likeDb					= new File("like.db");
+			likeDb.createNewFile();
+			
+			FileOutputStream	fos			= new FileOutputStream("like.db");
+			ObjectOutputStream oos		= new ObjectOutputStream(fos);
+			
+			oos.writeObject(this.likeTable);
+		} catch (Exception e){
+			System.out.println(e.toString());
+		}
+	}
+	
+	public void readLikeTableDb(){
+		try {
+			File likeDb					= new File("like.db");
+			likeDb.createNewFile();
+			
+			FileInputStream	fis			= new FileInputStream("like.db");
+			ObjectInputStream ois		= new ObjectInputStream(fis);
+						
+			ArrayList<Like> readcase	= (ArrayList<Like>) ois.readObject();
+			
+			this.likeTable = readcase;
+		} catch (Exception e){
+			System.out.println(e.toString());
+		}
 	}
 	
 	public void writeSeekerDb(){
