@@ -6,10 +6,16 @@ public class Session {
 	private User sessionUser;
 	private SessionManager sessionManager;
 	private Scanner in;
+	private RState state;
 	
 	public Session(User user){
 		this.sessionUser 	= user;
 		sessionManager		= SessionManager.getInstance();
+		if(user instanceof Seeker){
+			this.setState(new RSeeker());
+		} else {
+			this.setState(new RListing());
+		}
 	}
 	
 	public void startSession(){
@@ -59,5 +65,13 @@ public class Session {
 
 	public void setSessionUser(User sessionUser) {
 		this.sessionUser = sessionUser;
+	}
+	
+	public RState getState(){
+		return state;
+	}
+	
+	public void setState(RState state){
+		this.state = state;
 	}
 }
