@@ -28,7 +28,8 @@ public class Session {
 			System.out.println("The following commands are available: ");
 			System.out.println("\t1. view matches.");
 			System.out.println("\t2. show listings");
-			System.out.println("\t3. logout\n");
+			System.out.println("\t3. show suggestions");
+			System.out.println("\t4. logout\n");
 			
 			System.out.println("Enter command: ");
 			
@@ -52,8 +53,12 @@ public class Session {
 			(new cmdCheckMatches()).execute(cmd);
 		}
 		
-		else if (cmd[0].equals("show")){
+		else if (cmd[0].equals("show") && cmd[1].equals("listings")){
 			(new cmdShowListings()).execute(cmd);
+		}
+		
+		else if (cmd[0].equals("show") && cmd[1].equals("suggestions")){
+			(new cmdShowSuggestions()).execute(cmd);
 		}
 		
 		return 0;

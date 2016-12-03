@@ -7,11 +7,11 @@ public class Listing extends User implements Serializable{
 	private String jobDescription;
 	private String skillsRequired;
 	private String jobTitle;
-	private String expRequired;
+	private int expRequired;
 	private String email;
 	private String password;
 	
-	public Listing(String name, String jobDescription, String skillsRequired, String jobTitle, String expRequired, String email, String password){
+	public Listing(String name, String jobDescription, String skillsRequired, String jobTitle, int expRequired, String email, String password){
 		this.name 			= name;
 		this.jobDescription = jobDescription;
 		this.skillsRequired = skillsRequired;
@@ -45,11 +45,11 @@ public class Listing extends User implements Serializable{
 		this.jobTitle = jobTitle;
 	}
 
-	public String getExpRequired() {
+	public int getExpRequired() {
 		return expRequired;
 	}
 
-	public void setExpRequired(String expRequired) {
+	public void setExpRequired(int expRequired) {
 		this.expRequired = expRequired;
 	}
 	
@@ -96,6 +96,26 @@ public class Listing extends User implements Serializable{
 	}
 	
 	public void outputCardInViewMatches(){
+		System.out.print("\nName: ");
+		System.out.println(this.name);
+		
+		System.out.print("Job Title: ");
+		System.out.println(this.jobTitle);
+		
+		System.out.print("Job Description: ");
+		System.out.println(this.jobDescription);
+		
+		System.out.print("Experience required: ");
+		System.out.println(this.expRequired);
+		
+		System.out.print("Skills required: ");
+		System.out.println(this.skillsRequired);
+		
+		System.out.print("Email: ");
+		System.out.println(this.email);
+	}
+	
+	public void outputSuggestions(){
 		System.out.print("\nName: ");
 		System.out.println(this.name);
 		

@@ -21,7 +21,7 @@ public class cmdSignup implements Command {
 	private Seeker signupSeeker(){
 		String name;
 		String education;
-		String workExp;
+		int workExp;
 		String skills;
 		String email;
 		String password;
@@ -33,7 +33,7 @@ public class cmdSignup implements Command {
 		education = in.nextLine();
 		
 		System.out.println("Enter work experience: ");
-		workExp = in.nextLine();
+		workExp = in.nextInt();
 		
 		System.out.println("Enter skills: ");
 		skills = in.nextLine();
@@ -52,7 +52,7 @@ public class cmdSignup implements Command {
 		String jobDescription;
 		String skillsRequired;
 		String jobTitle;
-		String expRequired;
+		int expRequired;
 		String email;
 		String password;
 		
@@ -69,7 +69,7 @@ public class cmdSignup implements Command {
 		skillsRequired = in.nextLine();
 		
 		System.out.println("Enter experience required: ");
-		expRequired = in.nextLine();
+		expRequired = in.nextInt();
 		
 		System.out.println("Enter email: ");
 		email = in.nextLine();
