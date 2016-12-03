@@ -12,24 +12,51 @@ public class cmdShowListings implements Command {
 	public void execute(String[] cmdParts) {
 		// TODO Auto-generated method stub
 		
+		Main.clearScreen();
+		
+		Scanner in = new Scanner(System.in);
+		
 		sessionManager		= SessionManager.getInstance();
 		sessionUser		 	= sessionManager.getSessionUser();
+		sessionList 		= sessionManager.getSessionList();
 		
+		System.out.println("LISTINGS MENU\n");
 		System.out.println("There are " + sessionList.size() + " listings to display.");
-		System.out.println("Enter y or n depending on your preference.");
+		System.out.println("Enter y, n or exit depending on your preference.");
 		
 		
 		for(User u:sessionList){
 			// display function
 						
-			System.out.println("Enter preference (y/n):");
+			u.outputCardListing();
+			
+			System.out.println("\nEnter preference (y/n/exit):");
 			String pref = in.nextLine();
 			
 			if(pref.equals("y")){
 				// add to like table
 				sessionManager.addToLikeTable(new Like(sessionUser, u));
-				sessionManager.checkMatch();
+				boolean isMatch = sessionManager.checkMatch(sessionUser, u);
+				if(isMatch==true){
+					if(sessionUser instanceof Seeker){
+						Seeker skrSessionUser = (Seeker) sessionUser;
+						Listing lstU = (Listing) u;
+						sessionManager.addMatch(new Match(skrSessionUser, lstU));
+					} else {	
+						Listing lstSessionUser = (Listing) sessionUser;
+						Seeker skrU = (Seeker) u;
+						sessionManager.addMatch(new Match(skrU, lstSessionUser));
+					}
+					System.out.print("\nYou've been matched with ");
+					System.out.print(u.getName());
+					System.out.println("!");
+				}
 			}
-		}	
+			if(pref.equals("exit")){
+				return;
+			}
+		}
+		System.out.println("\nEnd of listings!");
+		try{System.in.read();} catch(Exception e){}
 	}
 }

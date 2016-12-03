@@ -21,7 +21,7 @@ public class cmdSignup implements Command {
 	private Seeker signupSeeker(){
 		String name;
 		String education;
-		String workExp;
+		int workExp;
 		String skills;
 		String email;
 		String password;
@@ -29,11 +29,13 @@ public class cmdSignup implements Command {
 		System.out.println("Enter name: ");
 		name = in.nextLine();
 		
-		System.out.println("Enter education: ");
+		System.out.println("Enter education (PHD, MSC, BSC, DIP, HS, NA): ");
 		education = in.nextLine();
 		
-		System.out.println("Enter work experience: ");
-		workExp = in.nextLine();
+		System.out.println("Enter work experience (In years pls, thank you): ");
+		workExp = in.nextInt();
+		
+		in.nextLine();
 		
 		System.out.println("Enter skills: ");
 		skills = in.nextLine();
@@ -52,9 +54,10 @@ public class cmdSignup implements Command {
 		String jobDescription;
 		String skillsRequired;
 		String jobTitle;
-		String expRequired;
+		int expRequired = 0;
 		String email;
 		String password;
+		String education;
 		
 		System.out.println("Enter name: ");
 		name = in.nextLine();
@@ -68,8 +71,12 @@ public class cmdSignup implements Command {
 		System.out.println("Enter skills required: ");
 		skillsRequired = in.nextLine();
 		
-		System.out.println("Enter experience required: ");
-		expRequired = in.nextLine();
+		System.out.println("Enter experience required (in years): ");
+		expRequired = in.nextInt();
+		in.nextLine();
+				
+		System.out.println("Enter education required (PHD, MSC, BSC, DIP, HS, NA): ");
+		education = in.nextLine();
 		
 		System.out.println("Enter email: ");
 		email = in.nextLine();
@@ -77,6 +84,7 @@ public class cmdSignup implements Command {
 		System.out.println("Enter password: ");
 		password = in.nextLine();
 		
-		return new Listing(name, jobDescription, skillsRequired, jobTitle, expRequired, email, password);
+		
+		return new Listing(name, jobDescription, skillsRequired, jobTitle, expRequired, email, password, education);
 	}
 }

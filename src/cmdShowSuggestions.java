@@ -13,6 +13,8 @@ public class cmdShowSuggestions implements Command{
 	public void execute(String[] cmdParts) {
 		// TODO Auto-generated method stub
 		
+		in = new Scanner(System.in);
+		
 		Main.clearScreen();
 		
 		sessionManager		= SessionManager.getInstance();
@@ -24,11 +26,17 @@ public class cmdShowSuggestions implements Command{
 			ArrayList<Listing> suggestions = suggestionsmanager.rankSuggestions((Seeker)sessionUser);
 			for(Listing l:suggestions){
 				l.outputSuggestions();
+
+				// wait for input
+				try{System.in.read();} catch(Exception e){}
 			}
 		}else{
 			ArrayList<Seeker> suggestions = suggestionsmanager.rankSuggestions((Listing)sessionUser);
 			for(Seeker s:suggestions){
 				s.outputSuggestions();
+
+				// wait for input
+				try{System.in.read();} catch(Exception e){}
 			}
 		}
 	}

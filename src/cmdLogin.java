@@ -10,32 +10,27 @@ public class cmdLogin implements Command{
 	@Override
 	public void execute(String[] cmdParts) {
 		
-		try {
-			sessionManager = SessionManager.getInstance();
-			in = new Scanner(System.in);
+		sessionManager = SessionManager.getInstance();
+		in = new Scanner(System.in);
+		
+		System.out.println("Enter email: ");
+		String email = in.nextLine();
+		
+		System.out.println("Enter password: ");
+		String password = in.nextLine();
+		
+		boolean result = sessionManager.checkLogin(email, password);
+		
+		if(result){
+			System.out.println("Logged in!");
+			System.out.println("Press any key to continue.");
+			// save session and start mainscreen display
 			
-			System.out.println("Enter email: ");
-			String email = in.nextLine();
+			Session session = new Session(sessionManager.getSessionUser());
+			session.startSession();
 			
-			System.out.println("Enter password: ");
-			String password = in.nextLine();
-			
-			boolean result = sessionManager.checkLogin(email, password);
-			
-			if(result){
-				System.out.println("Logged in!");
-				System.out.println("Press any key to continue.");
-				// save session and start mainscreen display
-				
-				Session session = new Session(sessionManager.getSessionUser());
-				session.createSession();			
-				session.startSession();
-				
-			} else {
-				// throw invalid auth exception
-			}	
-		} catch(Exception e){
-			System.out.println(e.toString());
-		}
+		} else {
+			// throw invalid auth exception
+		}		
 	}	
 }

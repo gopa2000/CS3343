@@ -5,12 +5,12 @@ import java.io.*;
 public class Seeker extends User implements Serializable{
 	private String name;
 	private String education;
-	private String workExp;
+	private int workExp;
 	private String skills;
 	private String email;
 	private String password;
 	
-	public Seeker(String name, String education, String workExp, String skills, String email, String password){
+	public Seeker(String name, String education, int workExp, String skills, String email, String password){
 		this.name		= name;
 		this.education	= education;
 		this.workExp	= workExp;
@@ -35,11 +35,11 @@ public class Seeker extends User implements Serializable{
 		this.education = education;
 	}
 
-	public String getWorkExp() {
+	public int getWorkExp() {
 		return workExp;
 	}
 
-	public void setWorkExp(String workExp) {
+	public void setWorkExp(int workExp) {
 		this.workExp = workExp;
 	}
 
@@ -66,10 +66,58 @@ public class Seeker extends User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public void outputCardListing(){
+		System.out.print("\nName: ");
+		System.out.println(this.name);
+		
+		System.out.print("Education: ");
+		System.out.println(this.education);
+		
+		System.out.print("Work Experience: ");
+		System.out.println(this.workExp);
+		
+		System.out.print("Skills: ");
+		System.out.println(this.skills);
+	}
+	
+	public void outputCardInViewMatches(){
+		System.out.print("\nName: ");
+		System.out.println(this.name);
+		
+		System.out.print("Education: ");
+		System.out.println(this.education);
+		
+		System.out.print("Work Experience: ");
+		System.out.println(this.workExp);
+		
+		System.out.print("Skills: ");
+		System.out.println(this.skills);
+		
+		System.out.print("Email: ");
+		System.out.println(this.email);
+	}
+	
+	public void outputSuggestions(){
+		System.out.print("\nName: ");
+		System.out.println(this.name);
+		
+		System.out.print("Education: ");
+		System.out.println(this.education);
+		
+		System.out.print("Work Experience: ");
+		System.out.println(this.workExp);
+		
+		System.out.print("Skills: ");
+		System.out.println(this.skills);
+		
+		System.out.print("Email: ");
+		System.out.println(this.email);
+	}
+	
 	@Override
 	public String toString(){
-		return "[Name: " + name + ", Education: " + education + ", WorkExp: " + workExp + ", Skills: " + skills + ", Email: " + email + ", Password: " + password +" ]"; 
+		return "[Name: " + name + ", Education: " + education + ", WorkExp: " + workExp + ", Skills: " + skills + "Education: " + education + ", Email: " + email + ", Password: " + password +" ]"; 
 	}
 	
 }

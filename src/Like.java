@@ -24,4 +24,9 @@ public class Like implements Serializable {
 	public void setLikee(User likee) {
 		this.likee = likee;
 	}
+	
+	@Override
+	public String toString(){
+		return "[Liker: " + liker.getName() + ", Likee: " + likee.getName() + " ]";
+	}
 }

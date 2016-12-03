@@ -17,15 +17,15 @@ public class Main {
 				else { System.out.println(); }
 				
 				System.out.println("Hi, there!");
-				System.out.println("Here you find jobs and people to do them.");
+				System.out.println("We'll help you look for jobs that are perfect for you.");
 				System.out.println();
 				
 				System.out.println("Available commands: ");
 				System.out.println("\t1. signup <employer|seeker>");
 				System.out.println("\t2. login");
-				System.out.println("\t3. bye");
+				System.out.println("\t3. exit");
 				
-				System.out.print("Enter command: ");
+				System.out.print("\nEnter command: ");
 				
 				String cmd = in.nextLine();
 				String[] cmdParts = cmd.split(" ");
@@ -39,7 +39,10 @@ public class Main {
 	
 	private static void processInput(String cmdParts[]) { //throws InvalidCommandException {
 		
-		if(cmdParts[0].equals("bye")) System.exit(0);
+		if(cmdParts[0].equals("exit")){
+			System.out.println("\nGoodbye, see you soon!");
+			System.exit(0);
+		}
 		
 		/****************** debug *******************************/
 		if(cmdParts[0].equals("dbg")){
@@ -48,6 +51,8 @@ public class Main {
 			SessionManager sm 				= SessionManager.getInstance();
 			ArrayList<Seeker> seekers 		= sm.getSeekers();
 			ArrayList<Listing> listings 	= sm.getListings();
+			ArrayList<Like> likeTable 		= sm.getLikeTable();
+			ArrayList<Match> matchTable 	= sm.getMatchTable();
 			
 			System.out.println("Seekers: ");
 			for(Seeker s:seekers){
@@ -59,27 +64,21 @@ public class Main {
 				System.out.println(l.toString());
 			}
 			
+			System.out.println("Likes: ");
+			for(Like lk:likeTable){
+				System.out.println(lk.toString());
+			}
+			
+			System.out.println("Matches: ");
+			for(Match m:matchTable){
+				System.out.println(m.toString());
+			}
+			
 			// wait for input
 			try{System.in.read();} catch(Exception e){}
 		}
-		/*********************************************************/
 		
-		if(cmdParts[0].equals("fo")){
-			String chatroom = "seeker@urmum.comemployer@urgrandmum.com";
-			chatroom = chatroom.replaceAll("[^a-zA-Z0-9]+","");
-			
-	        String newRoom = "";
-
-	        for(int i=0; i<chatroom.length(); i+=2){
-	            newRoom += chatroom.charAt(i);
-	        }
-			
-			System.out.println(newRoom);
-			
-			// wait for input
-			try{System.in.read();} catch(Exception e){}
-			
-		};
+		/*********************************************************/
 		
 		int argCount = cmdParts.length;
 		

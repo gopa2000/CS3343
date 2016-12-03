@@ -25,5 +25,8 @@ public class Match implements Serializable{
 		this.listing = listing;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "[Seeker: " + seeker.getName() + ", Listing: " + listing.getName() + " ]";
+	}
 }
