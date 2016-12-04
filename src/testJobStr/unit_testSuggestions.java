@@ -9,7 +9,7 @@ import org.junit.Test;
 import JobStr.*;
 
 
-public class unit_testAlgo1 {
+public class unit_testSuggestions {
 	
 	@Test
 		public void test_ElimnateGenericWords_01() throws Exception {
