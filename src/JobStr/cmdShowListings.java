@@ -8,12 +8,13 @@ public class cmdShowListings implements Command {
 	private User sessionUser;
 	private SessionManager sessionManager;
 	private Scanner in;
+	boolean flag_exit = false;
 	
 	@Override
 	public void execute(String[] cmdParts) throws Exception{ 
 		// TODO Auto-generated method stub
 		
-		if(cmdParts[0] != "show" && cmdParts[1] != "listings"){
+		if(cmdParts[0] != "show" || cmdParts[1] != "listings"){
 			throw new Exception("Invalid input");
 		}
 		
@@ -37,6 +38,7 @@ public class cmdShowListings implements Command {
 			
 			System.out.println("\nEnter preference (y/n/exit):");
 			String pref = in.nextLine();
+			System.out.println(pref);
 			
 			if(pref.equals("y")){
 				// add to like table
@@ -58,10 +60,15 @@ public class cmdShowListings implements Command {
 				}
 			}
 			if(pref.equals("exit")){
+				flag_exit = true;
 				return;
 			}
 		}
 		System.out.println("\nEnd of listings!");
 		try{System.in.read();} catch(Exception e){}
+	}
+	
+	public boolean getFlagExit(){
+		return flag_exit;
 	}
 }

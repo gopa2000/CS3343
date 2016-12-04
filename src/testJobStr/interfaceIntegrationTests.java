@@ -327,38 +327,6 @@ public class interfaceIntegrationTests {
 			System.out.println(e.toString());
 		}
 	}
-	
-    @Test
-    public void testCmdShowListings_1(){
-    	try {
-	    	cmdShowListings slc = new cmdShowListings();
-	    	
-	    	String[] cmd = {"incorrect", "fuckit"};
-	    	String input = "y\n" +  "n\n";
-	    	
-	    	setInput(input);
-	    	setOutput();
-	    	
-	    	
-	    	try {
-	    		slc.execute(cmd);
-	    	} catch(Exception e){
-	    		System.out.println(e.toString());
-	    	}
-	    	
-	    	boolean success;
-	    	if(getOutput().contains("Invalid"))
-	    		success = true;
-	    	else
-	    		success = false;
-	    	
-	    	assertEquals(true, success);
-	    	
-    	} catch(Exception e){
-    		System.out.println(e.toString());
-    	}
-    }
-	
     
     ByteArrayInputStream bis;
     
