@@ -10,8 +10,12 @@ public class cmdShowListings implements Command {
 	private Scanner in;
 	
 	@Override
-	public void execute(String[] cmdParts) {
+	public void execute(String[] cmdParts) throws Exception{ 
 		// TODO Auto-generated method stub
+		
+		if(cmdParts[0] != "show" && cmdParts[1] != "listings"){
+			throw new Exception("Invalid input");
+		}
 		
 		Main.clearScreen();
 		
@@ -37,7 +41,7 @@ public class cmdShowListings implements Command {
 			if(pref.equals("y")){
 				// add to like table
 				sessionManager.addToLikeTable(new Like(sessionUser, u));
-				boolean isMatch = sessionManager.checkMatch(sessionUser, u);
+				boolean isMatch = sessionManager.checkMatch(sessionUser, u); 
 				if(isMatch==true){
 					if(sessionUser instanceof Seeker){
 						Seeker skrSessionUser = (Seeker) sessionUser;

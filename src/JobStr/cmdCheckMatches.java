@@ -12,13 +12,12 @@ public class cmdCheckMatches implements Command {
 	public void execute(String[] cmdParts) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("anns");
-		
+	
 		Main.clearScreen();
 		
 		sessionManager		= SessionManager.getInstance();
 		sessionUser		 	= sessionManager.getSessionUser();
-		matchTable 			= sessionManager.getMatchTable();
+		matchTable 			= sessionManager.getMatchTable(); 
 		
 		int matches = 0;
 		
@@ -30,7 +29,7 @@ public class cmdCheckMatches implements Command {
 			} else {
 				if(sessionUser.equals(m.getListing())){
 					matches++;
-				}
+				} 
 			}
 		}
 		

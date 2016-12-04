@@ -45,21 +45,25 @@ public class Session {
 	
 	private int processInput(String cmd[]) throws Exception{
 		
-		if(cmd[0].equals("logout")){
-			System.out.println("\nGoodbye, see you soon!");
-			return 1;
-		}
-		
-		if(cmd[0].equals("view")){
-			(new cmdCheckMatches()).execute(cmd);
-		}
-		
-		else if (cmd[0].equals("show") && cmd[1].equals("listings")){
-			(new cmdShowListings()).execute(cmd);
-		}
-		
-		else if (cmd[0].equals("show") && cmd[1].equals("suggestions")){
-			(new cmdShowSuggestions()).execute(cmd);
+		try {
+			if(cmd[0].equals("logout")){
+				System.out.println("\nGoodbye, see you soon!");
+				return 1;
+			}
+			
+			if(cmd[0].equals("view")){
+				(new cmdCheckMatches()).execute(cmd);
+			}
+			
+			else if (cmd[0].equals("show") && cmd[1].equals("listings")){
+				(new cmdShowListings()).execute(cmd);
+			}
+			
+			else if (cmd[0].equals("show") && cmd[1].equals("suggestions")){
+				(new cmdShowSuggestions()).execute(cmd);
+			} 
+			} catch (Exception e){
+				System.out.println(e.toString());
 		}
 		
 		return 0;

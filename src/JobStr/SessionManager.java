@@ -239,7 +239,7 @@ public class SessionManager implements Serializable {
 	}
 
 	public void setMatchTable(ArrayList<Match> matchTable) {
-		this.matchTable = matchTable;
+		this.matchTable = matchTable; 
 	}
 
 	public User getSessionUser() {
