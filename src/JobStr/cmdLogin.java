@@ -7,9 +7,10 @@ public class cmdLogin implements Command{
 	private SessionManager sessionManager;
 	private Scanner in;
 
+	private boolean result = true;
 	
 	@Override
-	public void execute(String[] cmdParts) {
+	public void execute(String[] cmdParts) throws Exception{
 		
 		sessionManager = SessionManager.getInstance();
 		in = new Scanner(System.in);
@@ -20,7 +21,7 @@ public class cmdLogin implements Command{
 		System.out.println("Enter password: ");
 		String password = in.nextLine();
 		
-		boolean result = sessionManager.checkLogin(email, password);
+		result = sessionManager.checkLogin(email, password);
 		
 		if(result){
 			System.out.println("Logged in!");
@@ -31,7 +32,7 @@ public class cmdLogin implements Command{
 			session.startSession();
 			
 		} else {
-			// throw invalid auth exception
+			throw new Exception("Invalid username or password.");
 		}		
 	}	
 }

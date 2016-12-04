@@ -15,7 +15,7 @@ public class Main {
 				clearScreen();
 				
 				if(first){first = false;}
-				else { System.out.println(); }
+				else { System.out.println(); } 
 				
 				System.out.println("Hi, there!");
 				System.out.println("We'll help you look for jobs that are perfect for you.");
@@ -91,13 +91,19 @@ public class Main {
 				System.out.println("User added sucessfully");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println("Invalid Input");
+				System.out.println(e.toString());
 			}
 			
 		}
 		
 		else if(cmdParts[0].equals("login")){
-			(new cmdLogin()).execute(cmdParts);
+			try {
+				(new cmdLogin()).execute(cmdParts);
+			}
+			catch (Exception e){
+				System.out.println(e.toString());
+				System.out.println("Press any key to continue.");
+			}
 		}
 		
 		else {
