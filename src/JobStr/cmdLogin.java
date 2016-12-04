@@ -1,7 +1,7 @@
 package JobStr;
 import java.util.*;
 
-public class cmdLogin implements Command{
+public class cmdLogin implements Command{ 
 
 	private ArrayList<User> users;
 	private SessionManager sessionManager;

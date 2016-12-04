@@ -32,7 +32,7 @@ public class interfaceTests {
 						System.out.println("Logged In!");
 						System.out.println("Press any key to continue.");
 					} else {
-						throw new Exception("Invalid username or password.");
+						throw new Exception("Invalid username or password."); 
 					}		
 				}
 			}

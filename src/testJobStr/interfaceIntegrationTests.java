@@ -268,8 +268,8 @@ public class interfaceIntegrationTests {
 					"PHD\n" +
 					"-1\n" +
 					"test\n" +
-					"test@abc.ocm" +
-					"test";
+					"test@abc.ocm\n" +
+					"test\n";
 			
 			setInput(input);
 			setOutput();
@@ -328,6 +328,37 @@ public class interfaceIntegrationTests {
 		}
 	}
 	
+    @Test
+    public void testCmdShowListings_1(){
+    	try {
+	    	cmdShowListings slc = new cmdShowListings();
+	    	
+	    	String[] cmd = {"incorrect", "fuckit"};
+	    	String input = "y\n" +  "n\n";
+	    	
+	    	setInput(input);
+	    	setOutput();
+	    	
+	    	
+	    	try {
+	    		slc.execute(cmd);
+	    	} catch(Exception e){
+	    		System.out.println(e.toString());
+	    	}
+	    	
+	    	boolean success;
+	    	if(getOutput().contains("Invalid"))
+	    		success = true;
+	    	else
+	    		success = false;
+	    	
+	    	assertEquals(true, success);
+	    	
+    	} catch(Exception e){
+    		System.out.println(e.toString());
+    	}
+    }
+	
     
     ByteArrayInputStream bis;
     
@@ -349,9 +380,12 @@ public class interfaceIntegrationTests {
         System.setOut(new PrintStream(bos));
     }
 
-    private String getOutput()
+    private String getOutput() 
     {
         System.setOut(oldPrintStream);
         return bos.toString();
     }
+    
+    
+
 }
