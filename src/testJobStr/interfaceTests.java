@@ -702,6 +702,8 @@ public class interfaceTests {
 		}
 	}
 	
+	
+	
     PrintStream oldPrintStream;
     ByteArrayOutputStream bos;
         
