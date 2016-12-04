@@ -70,22 +70,28 @@ public class SuggestionsManager {
 	//Here user is employer
 	public ArrayList<Seeker> rankSuggestions(Listing listing) throws Exception{
 		ArrayList<Seeker> seekers = sessionManager.getSeekers();
+		//System.out.println(seekers.size());
+		
 		ArrayList<ScoreRelation> scoreList = new ArrayList<ScoreRelation>();
 		
 		try {
 			for(Seeker seeker:seekers){
 				int skillScore, eduScore, workExScore;
-				
+				//System.out.println(seeker.getName());
 				String curSkill = this.ElimnateGenericWords(listing.getSkillsRequired());
 				String curEd = this.ElimnateGenericWords(listing.getEducation());
 				
 				skillScore = this.scoreSkills(curSkill, this.ElimnateGenericWords(seeker.getSkills()));
+				//System.out.println(skillScore);
 				workExScore = this.getWorkExperienceScore(listing.getExpRequired(), seeker.getWorkExp());
-				
-				eduScore = this.getEducationScore(curEd, this.ElimnateGenericWords(seeker.getEducation()));
-				
+				//System.out.println(workExScore);
+				eduScore = this.getEducationScore(curEd.toUpperCase(), listing.getEducation());
+				//System.out.println(eduScore);
 				int score = skillScore + workExScore + eduScore;
+				//System.out.println(score);
+				
 				scoreList.add(new ScoreRelation(listing, seeker,score));
+				
 			}
 		} catch(Exception e){
 			throw new Exception(e);
