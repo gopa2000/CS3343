@@ -99,11 +99,18 @@ public class Main {
 		else if(cmdParts[0].equals("login")){
 			try {
 				(new cmdLogin()).execute(cmdParts);
+<<<<<<< HEAD
 			}
 			catch (Exception e){
 				System.out.println(e.toString());
 				System.out.println("Press any key to continue.");
-            }
+=======
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.toString());
+				System.out.println("Press any key to continue. ");
+>>>>>>> 6d9fa49b4540b7940e89a7d46a6df13164fe9cbf
+			}
 		}
 		
 		else {

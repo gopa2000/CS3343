@@ -2,7 +2,7 @@ package JobStr;
 import java.util.*;
 public class cmdSignup implements Command {
 
-	private SessionManager sessionManager = SessionManager.getInstance();
+	private SessionManager sessionManager;
 
 	
 	private Scanner in;
@@ -10,7 +10,7 @@ public class cmdSignup implements Command {
 	
 	
 	@Override
-	public void execute(String[] cmdParts) throws Exception {
+	public void execute(String[] cmdParts) throws Exception { 
 		// TODO Auto-generated method stub
 		in = new Scanner(System.in);
 		jobs.add("PHD");
@@ -20,12 +20,13 @@ public class cmdSignup implements Command {
 		jobs.add("HS");
 		jobs.add("NA");
 		
+		sessionManager = SessionManager.getInstance(); 
+		
 		if(cmdParts[1].equals("employer")){
 			try {
 				sessionManager.addUser(signupListing());
 			} catch (Exception e) {
-				
-				throw new Exception("Invalid Input");
+				//throw new Exception("Invalid Input");
 			}
 		} else if(cmdParts[1].equals("seeker")){
 			try{

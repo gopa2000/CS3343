@@ -10,7 +10,11 @@ public class cmdLogin implements Command{
 	private boolean result = true;
 	
 	@Override
+<<<<<<< HEAD
+	public void execute(String[] cmdParts) throws Exception{
+=======
 	public void execute(String[] cmdParts) throws Exception {
+>>>>>>> 6d9fa49b4540b7940e89a7d46a6df13164fe9cbf
 		
 		sessionManager = SessionManager.getInstance();
 		in = new Scanner(System.in);

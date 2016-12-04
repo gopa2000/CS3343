@@ -21,8 +21,9 @@ public class SuggestionsManager {
 	
 	
 	//Here user is seeker
-	public ArrayList<Listing> rankSuggestions(Seeker seeker){
+	public ArrayList<Listing> rankSuggestions(Seeker seeker) throws Exception{
 		ArrayList<Listing> listings = sessionManager.getListings();
+		//System.out.println(listings.size());
 		ArrayList<ScoreRelation> scoreList = new ArrayList<ScoreRelation>();
 		
 		try {
@@ -33,14 +34,19 @@ public class SuggestionsManager {
 				String curEd = this.ElimnateGenericWords(seeker.getEducation());
 				
 				skillScore = this.scoreSkills(curSkill, this.ElimnateGenericWords(listing.getSkillsRequired()));
+				//System.out.println(skillScore);
 				workExScore = this.getWorkExperienceScore(listing.getExpRequired(), seeker.getWorkExp() );
-				eduScore = this.getEducationScore(curEd, this.ElimnateGenericWords(listing.getEducation()));
+				/*System.out.println(workExScore);
+				System.out.println(curEd);
+				System.out.println(seeker.getEducation());*/
+				
+				eduScore = this.getEducationScore(curEd.toUpperCase(), listing.getEducation());
 				
 				int score = skillScore + workExScore + eduScore;
 				scoreList.add(new ScoreRelation(seeker, listing, score));
 			}
 		} catch(Exception e){
-			System.out.println(e.toString());
+			throw new Exception(e);
 		}
 		
 		Collections.sort(scoreList);
@@ -62,7 +68,7 @@ public class SuggestionsManager {
 	}
 	
 	//Here user is employer
-	public ArrayList<Seeker> rankSuggestions(Listing listing){
+	public ArrayList<Seeker> rankSuggestions(Listing listing) throws Exception{
 		ArrayList<Seeker> seekers = sessionManager.getSeekers();
 		ArrayList<ScoreRelation> scoreList = new ArrayList<ScoreRelation>();
 		
@@ -75,22 +81,18 @@ public class SuggestionsManager {
 				
 				skillScore = this.scoreSkills(curSkill, this.ElimnateGenericWords(seeker.getSkills()));
 				workExScore = this.getWorkExperienceScore(listing.getExpRequired(), seeker.getWorkExp());
+				
 				eduScore = this.getEducationScore(curEd, this.ElimnateGenericWords(seeker.getEducation()));
 				
 				int score = skillScore + workExScore + eduScore;
 				scoreList.add(new ScoreRelation(listing, seeker,score));
 			}
 		} catch(Exception e){
-			System.out.println(e.toString());
+			throw new Exception(e);
 		}
 		
 		Collections.sort(scoreList);
 		
-		/*
-		for(ScoreRelation sr:scoreList){
-			System.out.println(sr.toString());
-		}
-		*/
 		
 		ArrayList<Seeker> result = new ArrayList<>();
 		
@@ -102,12 +104,15 @@ public class SuggestionsManager {
 		
 	}
 	
-	public int getWorkExperienceScore(int seeker, int listing){
+	public int getWorkExperienceScore(int seeker, int listing) throws Exception{
 		int score = 0;
 		int workExpSeeker = seeker;
 		int workExpReqListing = listing;
 		int difference = workExpReqListing - workExpSeeker;
-		if(difference < 2){
+		if(workExpSeeker == -1 || workExpReqListing == -1){
+			throw new Exception("Invalid Input");
+		}
+		else if(difference < 2){
 			return 20;
 		}else if(difference >= 2 && difference < 4){
 			return 15;

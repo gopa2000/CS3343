@@ -60,6 +60,22 @@ public class SessionManager implements Serializable {
 		matchTable.add(match);
 	}
 	
+	public void refreshListing(){
+		listings = new ArrayList<>();
+	}
+	
+	public void refreshSeekers(){
+		seekers = new ArrayList<>();
+	}
+	
+	public void addListing(Listing l){
+		listings.add(l);
+	}
+	
+	public void addSeeker(Seeker s){
+		seekers.add(s);
+	}
+	
 	public void writeMatchTableDb(){
 		try {
 			File matchDb			= new File("match.db");
@@ -191,7 +207,10 @@ public class SessionManager implements Serializable {
 	}
 
 	public ArrayList<Listing> getListings() {
+		//System.out.println(listings.size());
 		return listings;
+		
+		
 	}
 
 	public void setListings(ArrayList<Listing> listings) {
