@@ -702,7 +702,7 @@ public class interfaceTests {
 		}
 	}
 	
-	
+
 	
     PrintStream oldPrintStream;
     ByteArrayOutputStream bos;
@@ -719,5 +719,4 @@ public class interfaceTests {
         System.setOut(oldPrintStream);
         return bos.toString();
     }
-
 }

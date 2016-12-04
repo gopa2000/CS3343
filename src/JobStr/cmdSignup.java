@@ -18,19 +18,22 @@ public class cmdSignup implements Command {
 		jobs.add("BSC");
 		jobs.add("DIP");
 		jobs.add("HS");
-		jobs.add("NA");
+		jobs.add("NA"); 
 		
 		sessionManager = SessionManager.getInstance(); 
 		
 		if(cmdParts[1].equals("employer")){
 			try {
 				sessionManager.addUser(signupListing());
+				System.out.println("user created");
 			} catch (Exception e) {
-				//throw new Exception("Invalid Input");
+				throw new Exception("Invalid Input");
 			}
 		} else if(cmdParts[1].equals("seeker")){
 			try{
 				sessionManager.addUser(signupSeeker());
+				System.out.println("user created");
+
 			}catch(Exception e){
 				throw new Exception("Invalid Input");
 			}

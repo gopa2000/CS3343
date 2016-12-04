@@ -35,7 +35,7 @@ public class SessionManager implements Serializable {
 		this.readListingsDb();
 		this.readSeekersDb();
 		this.readLikeTableDb();
-		this.readMatchTableDb();
+		//this.readMatchTableDb();
 	}
 	
 	public void init(){
@@ -276,6 +276,7 @@ public class SessionManager implements Serializable {
 	
 	public void addToLikeTable(Like like){
 		likeTable.add(like);
+		writeLikeTableDb();
 	}
 	
 	public boolean checkMatch(User liker, User likee){

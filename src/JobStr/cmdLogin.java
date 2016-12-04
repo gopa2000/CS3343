@@ -26,6 +26,9 @@ public class cmdLogin implements Command{
 		if(result){
 			System.out.println("Logged in!");
 			System.out.println("Press any key to continue.");
+			
+			// wait for input
+			try{System.in.read();} catch(Exception e){}
 			// save session and start mainscreen display
 			
 			Session session = new Session(sessionManager.getSessionUser());
