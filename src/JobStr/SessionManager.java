@@ -52,9 +52,6 @@ public class SessionManager implements Serializable {
 		writeSeekerDb();	
 	}
 	
-	public void addLike(Like like){
-		likeTable.add(like);
-	}
 	
 	public void addMatch(Match match){
 		matchTable.add(match);
@@ -108,6 +105,7 @@ public class SessionManager implements Serializable {
 	}
 	
 	public void writeLikeTableDb(){
+		
 		try{
 			File likeDb					= new File("like.db");
 			likeDb.createNewFile();
@@ -282,10 +280,21 @@ public class SessionManager implements Serializable {
 	public boolean checkMatch(User liker, User likee){
 		for(Like l:likeTable){
 			if(l.getLiker().equals(likee) && l.getLikee().equals(liker)){
+				//System.out.println(l.getLiker().getName());
+				//System.out.println(l.getLikee().getName());
+				writeMatchTableDb();
 				return true;
 			}
 		}
 		return false;
-	};
+	}
+	
+	public void clearLikeTable(){
+		likeTable = new ArrayList<>();
+	}
+	
+	public void clearMatchTable(){
+		matchTable = new ArrayList<>();
+	}
 	
 }
