@@ -11,7 +11,7 @@ public class cmdShowSuggestions implements Command{
 	
 	
 	@Override
-	public void execute(String[] cmdParts) {
+	public void execute(String[] cmdParts) throws Exception {
 		// TODO Auto-generated method stub
 		
 		in = new Scanner(System.in);

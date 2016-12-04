@@ -18,8 +18,8 @@ public class Session {
 			this.setState(new RListing());
 		}
 	}
-	
-	public void startSession(){
+
+	public void startSession() throws Exception{
 		sessionList = sessionManager.getSessionList();
 		in			= new Scanner(System.in);
 		
@@ -43,7 +43,7 @@ public class Session {
 
 	}
 	
-	private int processInput(String cmd[]){
+	private int processInput(String cmd[]) throws Exception{
 		
 		if(cmd[0].equals("logout")){
 			System.out.println("\nGoodbye, see you soon!");

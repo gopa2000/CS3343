@@ -97,7 +97,13 @@ public class Main {
 		}
 		
 		else if(cmdParts[0].equals("login")){
-			(new cmdLogin()).execute(cmdParts);
+			try {
+				(new cmdLogin()).execute(cmdParts);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.toString());
+				System.out.println("Press any key to continue. ");
+			}
 		}
 		
 		else {

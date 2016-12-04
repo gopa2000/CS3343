@@ -9,14 +9,14 @@ public class cmdLogin implements Command{
 
 	
 	@Override
-	public void execute(String[] cmdParts) {
+	public void execute(String[] cmdParts) throws Exception {
 		
 		sessionManager = SessionManager.getInstance();
 		in = new Scanner(System.in);
 		
 		System.out.println("Enter email: ");
 		String email = in.nextLine();
-		
+	
 		System.out.println("Enter password: ");
 		String password = in.nextLine();
 		
