@@ -231,6 +231,14 @@ public class SessionManager implements Serializable {
 	public void setSessionList(ArrayList<User> sessionList) {
 		this.sessionList = sessionList;
 	}
+	
+	public void setSessionListToSeeker(ArrayList<Seeker> sessionList) {
+		this.sessionList = sessionList;
+	}
+	
+	public void setSessionListToListing(ArrayList<Listing> sessionList) {
+		this.sessionList = sessionList;
+	}
 
 	public ArrayList<Match> getMatchTable() {
 		return matchTable;
