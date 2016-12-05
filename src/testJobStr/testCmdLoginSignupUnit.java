@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.*;
 import java.util.ArrayList;
 
-public class interfaceTests {
+public class testCmdLoginSignupUnit {
 
 //	private SessionManager sessionManager;
 	

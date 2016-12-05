@@ -13,7 +13,7 @@ import org.junit.Test;
 
 
 
-public class integration_testAlgo1 {
+public class testRankingAlgo {
 	@Test
 	public void test_EducationScore_Integration_01() throws Exception {
 		SuggestionsManager sug = new SuggestionsManager();
