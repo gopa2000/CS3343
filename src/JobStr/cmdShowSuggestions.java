@@ -25,6 +25,7 @@ public class cmdShowSuggestions implements Command{
 		
 		if(sessionUser instanceof Seeker){
 			ArrayList<Listing> suggestions = suggestionsmanager.rankSuggestions((Seeker)sessionUser);
+			System.out.println(suggestions.toString());
 			for(Listing l:suggestions){
 				l.outputSuggestions();
 

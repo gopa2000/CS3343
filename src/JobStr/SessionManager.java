@@ -88,21 +88,7 @@ public class SessionManager implements Serializable {
 		}
 	}
 	
-	public void readMatchTableDb(){
-		try {
-			File matchDb 				= new File("match.db");
-			matchDb.createNewFile(); // creates new file if doesn't exist, does nothing otherwise
-			
-			FileInputStream fis			= new FileInputStream("match.db");
-			ObjectInputStream ois 		= new ObjectInputStream(fis);
-			
-			ArrayList<Match> readcase	= (ArrayList<Match>) ois.readObject();
-			
-			this.matchTable = readcase;
-		} catch (Exception e){
-			System.out.println(e.toString());
-		}
-	}
+	
 	
 	public void writeLikeTableDb(){
 		
